@@ -10,7 +10,7 @@ import { fetchBulkData } from '../utils/scryfall/bulkData'
  *
  * Run with
  *
- *     yarn tsx ./scripts/search.ts
+ *     yarn tsx ./scripts/search
  *
  */
 async function main() {

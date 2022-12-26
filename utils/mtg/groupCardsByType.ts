@@ -13,26 +13,19 @@ const typeOrder: Record<string, number> = {
   Other: 7
 }
 
-export const groupCardsByType = <
-  T extends { typeLine: string; count?: number }
->(
+export const groupCardsByType = <T extends { type_line: string }>(
   cards: T[]
-): { type: string; cards: T[]; length: number }[] => {
+): { type: string; cards: T[] }[] => {
   const grouped = groupBy(
     cards,
-    (card) => card.typeLine?.match(typeRegex)?.[1] ?? 'Other'
+    (card) => card.type_line?.match(typeRegex)?.[1] ?? 'Other'
   )
 
   return sortBy(
-    Object.keys(grouped)
-      .map((type) => ({
-        type,
-        cards: grouped[type]
-      }))
-      .map((g) => ({
-        ...g,
-        length: g.cards.reduce((total, card) => (card.count ?? 1) + total, 0)
-      })),
+    Object.keys(grouped).map((type) => ({
+      type,
+      cards: grouped[type]
+    })),
     (group) => typeOrder[group.type]
   )
 }

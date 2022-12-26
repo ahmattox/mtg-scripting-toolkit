@@ -1,3 +1,9 @@
+/**
+ * Types describing the shape of the JSON returned from the Cube Cobra API
+ * endpoint. These have been determined experimentally and may not be perfectly
+ * accurate.
+ */
+
 export interface CubeCobraCard {
   cmc: number
   colorCategory: string

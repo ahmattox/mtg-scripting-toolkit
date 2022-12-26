@@ -9,6 +9,7 @@
   "scripts": {
     "lint": "eslint '.' --ext .ts",
     "format": "prettier --write \"**/*.{ts,md}\"",
+    "types:check": "tsc --noEmit",
     "search": "tsx ./scripts/search.ts",
     "cache:clear": "rm -rf ./.cache"
   },

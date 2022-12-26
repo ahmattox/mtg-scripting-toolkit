@@ -7,5 +7,4 @@ export * as cardAttributes from './cardAttributes'
 
 export { colorGroup, type ColorGroup } from './colorGroup'
 export { groupCardsByType } from './groupCardsByType'
-export { simplifyCards, type SimplifiedCard } from './simplifyCards'
 export { uniqueFirstPrintings } from './uniqueFirstPrintings'

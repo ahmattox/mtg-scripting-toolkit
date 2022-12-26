@@ -1,10 +1,10 @@
 import { groupBy, sortBy, sum } from 'lodash'
 
-import * as scryfall from '../utils/scryfall'
-import * as mtg from '../utils/mtg'
+import * as scryfall from '../../utils/scryfall'
+import * as mtg from '../../utils/mtg'
 
-import { wordCount } from '../utils/wordCount'
-import { Color, log } from '../utils/log'
+import { wordCount } from '../../utils/wordCount'
+import { Color, log } from '../../utils/log'
 
 function wordsOnCard(card: scryfall.Card) {
   if (card.oracle_text != null) {
@@ -22,7 +22,7 @@ function flavorTextWordsOnCard(card: scryfall.Card) {
 /**
  * Run with
  *
- *     yarn run tsx ./scripts/bulk-data-analysis/count-card-text-by-year
+ *     yarn run tsx ./scripts/examples/count-card-text-by-year
  *
  */
 async function main() {

@@ -1,10 +1,10 @@
 import { uniq } from 'lodash'
 
-export const toObjectKeyedOn = <T>(array: T[], key: string) => {
+export const toObjectKeyedOn = <T>(array: T[], key: keyof T) => {
   return array.reduce(
     (object, element) => ({
       ...object,
-      [element[key]]: element
+      [element[key] as string]: element
     }),
     {}
   )

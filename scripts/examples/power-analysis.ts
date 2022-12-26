@@ -1,14 +1,14 @@
 import { groupBy, sortBy } from 'lodash'
 
-import * as scryfall from '../utils/scryfall'
-import * as mtg from '../utils/mtg'
+import * as scryfall from '../../utils/scryfall'
+import * as mtg from '../../utils/mtg'
 
-import { Color, log } from '../utils/log'
+import { Color, log } from '../../utils/log'
 
 /**
  * Run with
  *
- *     yarn run tsx ./scripts/power-analysis
+ *     yarn run tsx ./scripts/examples/power-analysis
  *
  */
 async function main() {

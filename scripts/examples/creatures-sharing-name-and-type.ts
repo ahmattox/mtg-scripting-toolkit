@@ -1,20 +1,18 @@
 import { kebabCase } from 'lodash'
 
-import * as scryfall from '../utils/scryfall'
-import * as mtg from '../utils/mtg'
+import * as scryfall from '../../utils/scryfall'
+import * as mtg from '../../utils/mtg'
 
-import { Color, log } from '../utils/log'
-import { permutations } from '../utils/collections'
+import { Color, log } from '../../utils/log'
+import { permutations } from '../../utils/collections'
 
 /**
- * Boilerplate script for querying or other tasks with Scryfall's bulk data.
+ * Finds all creature types who's name and subtypes are the same.
  *
  * Run with
  *
- *     yarn run tsx ./scripts/query-template
+ *     yarn run tsx ./scripts/examples/creatures-sharing-name-and-type
  *
- * Bulk data will be cached. Prepend the command with `SKIP_CACHE=1` to reload
- * it.
  */
 
 async function main() {
