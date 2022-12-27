@@ -21,7 +21,7 @@ async function main() {
 
   // Filter Cards
   const filteredCards = cards.filter((card) =>
-    mtg.cardAttributes.oracleText(card).toLowerCase().includes('saproling')
+    mtg.card.textIncludes(card, 'saproling')
   )
 
   // Sort cards
@@ -31,12 +31,12 @@ async function main() {
   )
 
   // Print the result
-  log('')
+  log()
   log(`Found ${sortedCards.length} cards`, Color.blue)
-  log('')
+  log()
 
   log(sortedCards.map((card) => card.name).join('\n'), Color.blue)
-  log('')
+  log()
 }
 
 main()

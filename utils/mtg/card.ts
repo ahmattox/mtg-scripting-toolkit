@@ -44,7 +44,7 @@ export function totalToughness(card: scryfall.Card) {
  * Complete oracle text for a card. Joins the next of multi-part cards with '//'
  * on a new line in between.
  */
-export function oracleText(card: scryfall.Card) {
+export function text(card: scryfall.Card) {
   if (card.oracle_text != null) {
     return card.oracle_text
   }
@@ -55,10 +55,24 @@ export function oracleText(card: scryfall.Card) {
 }
 
 /**
+ * Test if a cards rules text includes a string. Case insensitive.
+ */
+export function textIncludes(card: scryfall.Card, value: string) {
+  return text(card).toLowerCase().includes(value.toLowerCase())
+}
+
+/**
+ * Test if a cards type line includes a string. Case insensitive.
+ */
+export function typeIncludes(card: scryfall.Card, value: string) {
+  return card.type_line.toLowerCase().includes(value.toLowerCase())
+}
+
+/**
  * Total word count in the rules text of a card.
  */
-export function oracleWordCount(card: scryfall.Card) {
-  return wordCount(oracleText(card))
+export function textWordCount(card: scryfall.Card) {
+  return wordCount(text(card))
 }
 
 /**

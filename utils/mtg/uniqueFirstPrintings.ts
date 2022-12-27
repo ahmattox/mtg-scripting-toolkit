@@ -15,7 +15,8 @@ export function uniqueFirstPrintings(cards: scryfall.Card[]) {
         card.layout !== 'art_series' &&
         card.layout !== 'token' &&
         card.layout !== 'double_faced_token' &&
-        card.layout !== 'emblem'
+        card.layout !== 'emblem' &&
+        card.set_type !== 'memorabilia'
       )
     }),
     (card) => card.name

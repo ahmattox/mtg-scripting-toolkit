@@ -41,12 +41,12 @@ async function main() {
     (card) => card.color_identity
   )
 
-  log('')
+  log()
   log(`Found ${sortedCards.length} cards`, Color.blue)
-  log('')
+  log()
 
   log(sortedCards.map((card) => card.name).join('\n'), Color.blue)
-  log('')
+  log()
 }
 
 main()

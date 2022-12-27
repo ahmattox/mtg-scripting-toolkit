@@ -3,7 +3,7 @@
  */
 
 export * as sort from './sort'
-export * as cardAttributes from './cardAttributes'
+export * as card from './card'
 
 export { colorGroup, type ColorGroup } from './colorGroup'
 export { groupCardsByType } from './groupCardsByType'

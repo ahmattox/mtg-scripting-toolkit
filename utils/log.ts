@@ -12,7 +12,7 @@ export enum Color {
   white = '\x1b[37m'
 }
 
-export const log = (string: string, color = Color.default) => {
+export const log = (string = '', color = Color.default) => {
   // eslint-disable-next-line no-console
   console.log(`${color}%s\x1b[0m`, string)
 }

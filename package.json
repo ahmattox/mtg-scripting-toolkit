@@ -1,10 +1,18 @@
 {
   "name": "mtg-scripting-toolkit",
   "private": true,
-  "description": "",
+  "description": "A collection of utilities for scripts to analyze Magic card data.",
   "license": "UNLICENSED",
+  "author": {
+    "name": "Anthony Mattox",
+    "url": "https://anthonymattox.com"
+  },
   "engines": {
     "node": "^18.10.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ahmattox/mtg-scripting-toolkit"
   },
   "scripts": {
     "lint": "eslint '.' --ext .ts",

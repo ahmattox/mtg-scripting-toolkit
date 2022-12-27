@@ -1,4 +1,4 @@
-import { groupBy, sortBy, sum } from 'lodash'
+import { groupBy, sortBy } from 'lodash'
 
 import * as scryfall from '../../utils/scryfall'
 import * as mtg from '../../utils/mtg'
@@ -6,9 +6,11 @@ import * as mtg from '../../utils/mtg'
 import { Color, log } from '../../utils/log'
 
 /**
+ * Count the number of unique new cards printed each year.
+ *
  * Run with
  *
- *     yarn run tsx ./scripts/examples/count-card-text-by-year
+ *     yarn run tsx ./scripts/examples/new-cards-per-year
  *
  */
 async function main() {
@@ -35,25 +37,15 @@ async function main() {
 
   const result = years.map((year) => {
     const cardCount = groupedByYear[year].length
-    const totalWords = sum(groupedByYear[year].map(mtg.card.textWordCount))
-    const totalFlavorTextWords = sum(
-      groupedByYear[year].map(mtg.card.flavorTextWordCount)
-    )
 
     return {
       year,
-      cardCount,
-      totalWords,
-      averageWordsPerCard: totalWords / cardCount,
-      averageFlavorWordsPerCard: totalFlavorTextWords / cardCount
+      cardCount
     }
   })
 
-  const output = `year,cards,words,words per card,flavor words per card\n${result
-    .map(
-      (year) =>
-        `${year.year},${year.cardCount},${year.totalWords},${year.averageWordsPerCard},${year.averageFlavorWordsPerCard}`
-    )
+  const output = `year,cards\n${result
+    .map((year) => `${year.year},${year.cardCount}`)
     .join('\n')}`
 
   log('\n\n')

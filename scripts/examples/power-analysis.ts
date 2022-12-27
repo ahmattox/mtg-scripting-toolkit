@@ -42,10 +42,10 @@ async function main() {
   const result = years.map((year) => {
     const cardCount = groupedByYear[year].length
     const totalPower = groupedByYear[year].reduce((result, card) => {
-      return result + mtg.cardAttributes.totalPower(card)
+      return result + mtg.card.totalPower(card)
     }, 0)
     const totalToughness = groupedByYear[year].reduce((result, card) => {
-      return result + mtg.cardAttributes.totalToughness(card)
+      return result + mtg.card.totalToughness(card)
     }, 0)
 
     return {

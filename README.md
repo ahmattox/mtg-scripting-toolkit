@@ -83,3 +83,9 @@ cards.
 
 Scryfall's bulk data requests are cached. Run `yarn cache:clear` to reset the
 cache and reload new data on the next run.
+
+## Contact
+
+Questions, comments, issues, or just want to talk about Magic and data? Find me
+on [twitter](https://twitter.com/ahmattox) or
+[Discord](https://discordapp.com/users/226747568866983938).
