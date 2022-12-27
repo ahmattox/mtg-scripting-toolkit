@@ -12,6 +12,14 @@ function parseNumber(value: string | null | undefined): number {
   return isNaN(parsed) ? 0 : parsed
 }
 
+export function isNamed(card: scryfall.Card, name: string) {
+  const names = [
+    card.name.toLowerCase(),
+    ...(card.card_faces?.map((face) => face.name.toLowerCase()) ?? [])
+  ]
+  return names.includes(name.toLowerCase())
+}
+
 /**
  * The total power of a card. If a card has multiple faces or parts that are
  * both creatures, the sum of all powers is returned.
