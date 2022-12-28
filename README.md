@@ -58,9 +58,23 @@ just cover the needs I've encountered.
 import * as scryfall from '../utils/scryfall'
 
 async function main() {
-    const cards = await scryfall.search(`o:saproling`)
+    // Fetch data from Scryfall with a query
+    const queriedCards = await scryfall.search(`o:saproling`)
 
-    // Do something with cards
+    // Fetch complete bulk data sets from Scryfall
+    const bulkDataCards = await scryfall.fetchBulkData('oracle_cards')
+
+    // Fetch a set of cards by name, or other identifying attributes
+    const collectionCards = await scryfall.fetchCollection([
+        'Mycologist',
+        'Saproling Burst',
+        'Saproling Migration'
+    ])
+
+    // Fetch information about a set, or all sets
+    const set = await scryfall.fetchSet('DOM')
+
+    // ...
 }
 
 main()
@@ -71,6 +85,28 @@ main()
 The `cube-cobra` directory includes functions for loading data from
 [Cube Cobra](https://cubecobra.com)'s list and JSON endpoints and types for the
 JSON structure.
+
+```typescript
+import * as cubeCobra from '../../utils/cube-cobra'
+
+async function main() {
+    const cubeID = 'regular'
+
+    // Fetch Cube information from Cube Cobra including card IDs and metadata
+    const cube = await cubeCobra.fetchCube(cubeID)
+
+    // Fetch the list of all card names in a Cube
+    const cardNames = await cubeCobra.fetchCubeList(cubeID)
+
+    // Fetch the full card data from Scryfall for each card in the Cube,
+    // respecting chosen printings.
+    const cards = await cubeCobra.fetchCubeCards(cubeID)
+
+    // ...
+}
+
+main()
+```
 
 ### MTG Utilities
 
