@@ -132,7 +132,14 @@ export interface Card {
   color_indicator?: Color[]
   color_identity: Color[]
   keywords: string[]
-  all_parts?: unknown
+  all_parts?: {
+    object: 'related_card' | string
+    id: string
+    component: 'combo_piece' | string
+    name: string
+    type_line: string
+    uri: string
+  }[]
   legalities: Record<string, 'legal' | 'not_legal' | 'banned'>
   games: string[]
   reserved: boolean
