@@ -1,8 +1,8 @@
 import { sum } from 'lodash'
 
-import * as scryfall from '../scryfall'
+import * as scryfall from 'utils/scryfall'
 
-import { wordCount } from '../wordCount'
+import { wordCount } from 'utils/wordCount'
 
 function parseNumber(value: string | null | undefined): number {
   if (value == null) {

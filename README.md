@@ -55,7 +55,7 @@ based on looking at results. These aren't necessarily complete or correct, but
 just cover the needs I've encountered.
 
 ```typescript
-import * as scryfall from '../utils/scryfall'
+import * as scryfall from 'utils/scryfall'
 
 async function main() {
     // Fetch data from Scryfall with a query
@@ -87,7 +87,7 @@ The `cube-cobra` directory includes functions for loading data from
 JSON structure.
 
 ```typescript
-import * as cubeCobra from '../../utils/cube-cobra'
+import * as cubeCobra from 'utils/cube-cobra'
 
 async function main() {
     const cubeID = 'regular'

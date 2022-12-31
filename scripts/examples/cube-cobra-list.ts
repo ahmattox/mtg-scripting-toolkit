@@ -1,8 +1,8 @@
 import prompt from 'prompt'
 
-import * as cubeCobra from '../../utils/cube-cobra'
+import * as cubeCobra from 'utils/cube-cobra'
 
-import { Color, log } from '../../utils/log'
+import { Color, log } from 'utils/log'
 
 /**
  *

@@ -1,6 +1,6 @@
 import { Card } from './types'
 
-import { cachedValue } from '../cache'
+import { cachedValue } from 'utils/cache'
 
 type BulkDataType =
   | 'oracle_cards'

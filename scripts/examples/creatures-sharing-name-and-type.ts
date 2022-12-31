@@ -1,10 +1,10 @@
 import { kebabCase } from 'lodash'
 
-import * as scryfall from '../../utils/scryfall'
-import * as mtg from '../../utils/mtg'
+import * as scryfall from 'utils/scryfall'
+import * as mtg from 'utils/mtg'
 
-import { Color, log } from '../../utils/log'
-import { permutations } from '../../utils/collections'
+import { Color, log } from 'utils/log'
+import { permutations } from 'utils/collections'
 
 /**
  * Finds all creature types who's name and subtypes are the same.

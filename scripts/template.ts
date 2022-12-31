@@ -1,8 +1,8 @@
-import * as scryfall from '../utils/scryfall'
-import * as mtg from '../utils/mtg'
-import * as cubeCobra from '../utils/cube-cobra'
+import * as scryfall from 'utils/scryfall'
+import * as mtg from 'utils/mtg'
+import * as cubeCobra from 'utils/cube-cobra'
 
-import { Color, log } from '../utils/log'
+import { Color, log } from 'utils/log'
 
 /**
  * Boilerplate script for querying or other tasks with Scryfall's bulk data.

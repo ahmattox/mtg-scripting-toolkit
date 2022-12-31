@@ -1,8 +1,8 @@
 import prompt from 'prompt'
 import { kebabCase } from 'lodash'
 
-import { Color, log } from '../utils/log'
-import { fetchBulkData } from '../utils/scryfall/bulkData'
+import { Color, log } from 'utils/log'
+import { fetchBulkData } from 'utils/scryfall/bulkData'
 
 /**
  * Search the Scryfall bulk data set for a card by name. Built for debugging to

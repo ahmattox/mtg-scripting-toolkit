@@ -1,6 +1,6 @@
 import { uniqBy } from 'lodash'
 
-import * as scryfall from '../scryfall'
+import * as scryfall from 'utils/scryfall'
 
 /**
  * Given a set of Scryfall bulk data, get the first unique printing of each

@@ -1,4 +1,4 @@
-import * as scryfall from '../scryfall'
+import * as scryfall from 'utils/scryfall'
 
 export enum ColorGroup {
   White = 'W',

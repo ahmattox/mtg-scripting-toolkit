@@ -1,9 +1,9 @@
 import prompt from 'prompt'
 
-import * as scryfall from '../../utils/scryfall'
-import * as mtg from '../../utils/mtg'
+import * as scryfall from 'utils/scryfall'
+import * as mtg from 'utils/mtg'
 
-import { Color, log } from '../../utils/log'
+import { Color, log } from 'utils/log'
 
 const partnerWithPattern = /Partner with (?<partnerName>.*?)( \(|\n|$)/
 
