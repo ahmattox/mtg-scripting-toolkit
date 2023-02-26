@@ -10,9 +10,6 @@ import { regexEscape } from 'utils/regexEscape'
 /**
  * Count the top creature types for each color across all MTG cards.
  *
- * Note this is partially implemented to also count references to creature types
- * which is more important for tribal interactions. This is incomplete and
- * doesn't count for type name inflections.
  *
  * Run with
  *
@@ -34,7 +31,7 @@ async function main() {
   )
 
   const creatureTypesPattern = new RegExp(
-    `\\b(${allCreatureTypes.join('|')})\\b`,
+    `\\b(${allCreatureTypes.join('|')})s?\\b`,
     'gi'
   )
 
@@ -50,7 +47,6 @@ async function main() {
       .text(card)
       .replace(new RegExp(`\\b${regexEscape(card.name)}\\b`, 'g'), '~')
 
-    // TODO: this fails to find plural type references
     const creatureTypeReferences: string[] = []
     const creatureTypeMatches = fullText.matchAll(creatureTypesPattern)
 
@@ -73,7 +69,8 @@ async function main() {
         row.card.color_identity.length === 0 ? ['C'] : row.card.color_identity
 
       for (const color of colors) {
-        for (const type of row.creatureTypes) {
+        // Sorting by the types this card references, not the card type.
+        for (const type of row.creatureTypeReferences) {
           if (result[color][type] == null) {
             result[color][type] = 0
           }
