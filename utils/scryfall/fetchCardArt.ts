@@ -16,9 +16,19 @@ export async function fetchCardArt(attributes: FetchCardID): Promise<{
 
   const card = await fetchCard(attributes)
 
-  if (card == null || card.object === 'error') {
+  if (card == null) {
     throw new Error(
       `No card card found for  ${compact([
+        attributes.name,
+        attributes.set,
+        attributes.id
+      ]).join(' - ')}.`
+    )
+  }
+
+  if (card.object === 'error') {
+    throw new Error(
+      `Error finding card  ${compact([
         attributes.name,
         attributes.set,
         attributes.id

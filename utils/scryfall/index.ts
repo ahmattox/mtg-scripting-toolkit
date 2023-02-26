@@ -6,12 +6,15 @@ export {
   type CardFaceName,
   type CardID,
   type CardFace,
+  type ImageType,
   type Card,
   type List,
   type Set,
   type Error,
   type FetchCardID
 } from './types'
+
+export { imageTypes } from './types'
 
 export { cardNames } from './cardNames'
 export { fetchCard } from './fetchCard'

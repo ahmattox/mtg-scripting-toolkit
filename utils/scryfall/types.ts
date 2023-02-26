@@ -69,6 +69,17 @@ export enum CardFaceName {
   Back = 'back'
 }
 
+export enum ImageType {
+  Small = 'small',
+  Normal = 'normal',
+  Large = 'large',
+  PNG = 'png',
+  ArtCrop = 'art_crop',
+  BorderCrop = 'border_crop'
+}
+
+export const imageTypes = Object.values(ImageType)
+
 /**
  * Attributes and combinations of attributes that can be used to uniquely
  * identify a card. Used in Scryfall's 'fetch collection' endpoint.
@@ -120,7 +131,7 @@ export interface Card {
   layout: CardLayout
   highres_image: boolean
   image_status: 'missing' | 'placeholder' | 'lowres' | 'highres_scan'
-  image_uris: Record<string, string>
+  image_uris: Record<ImageType, string>
   mana_cost: string
   cmc: number
   type_line: string
@@ -222,6 +233,7 @@ export interface Set {
   released_at: string
   set_type: SetType
   card_count: number
+  parent_set_code?: string
   digital: boolean
   nonfoil_only: boolean
   foil_only: boolean
