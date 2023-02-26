@@ -4,6 +4,8 @@ import * as scryfall from 'utils/scryfall'
 
 import { wordCount } from 'utils/wordCount'
 
+export { types } from './cardTypes'
+
 function parseNumber(value: string | null | undefined): number {
   if (value == null) {
     return 0
@@ -18,6 +20,26 @@ export function isNamed(card: scryfall.Card, name: string) {
     ...(card.card_faces?.map((face) => face.name.toLowerCase()) ?? [])
   ]
   return names.includes(name.toLowerCase())
+}
+
+export function power(card: scryfall.Card) {
+  if (card.power != null) {
+    return parseNumber(card.power)
+  }
+  if (card.card_faces != null) {
+    return parseNumber(card.card_faces[0]?.power)
+  }
+  return 0
+}
+
+export function toughness(card: scryfall.Card) {
+  if (card.toughness != null) {
+    return parseNumber(card.toughness)
+  }
+  if (card.card_faces != null) {
+    return parseNumber(card.card_faces[0]?.toughness)
+  }
+  return 0
 }
 
 /**

@@ -49,7 +49,7 @@ export async function fetchBulkData(
     const data = bulkDataObjects.data.find((object) => object.type === type)
 
     if (data == null) {
-      throw new Error('Unable to find oracle bulk data file')
+      throw new Error(`Unable to find bulk data set of type "${type}"`)
     }
 
     return (await fetch(data.download_uri).then((response) =>
