@@ -1,7 +1,7 @@
 import path from 'node:path'
 import fs from 'node:fs'
 
-const cacheDirectory = path.resolve(__dirname, '../.cache')
+const cacheDirectory = path.resolve(__dirname, '../../../.app-cache')
 
 /**
  * Returns a cached value, or executes the callback to retrieve and cache a new
@@ -25,7 +25,7 @@ export async function cachedValue<T>(
     await fs.promises.mkdir(cacheDirectory)
   }
 
-  if (process.env.SKIP_CACHE != null && fs.existsSync(filePath)) {
+  if (process.env.SKIP_CACHE == null && fs.existsSync(filePath)) {
     const stringValue = await (await fs.promises.readFile(filePath)).toString()
     return JSON.parse(stringValue)
   }

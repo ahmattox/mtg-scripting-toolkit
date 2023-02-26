@@ -25,3 +25,22 @@ export { fetchSets } from './fetchSets'
 export { imageURL, imageURLs } from './imageURL'
 export { search } from './search'
 export { fetchBulkData } from './bulkData'
+
+export {
+  fetchCardNames,
+  fetchArtistNames,
+  fetchWordBank,
+  fetchCreatureTypes,
+  fetchPlaneswalkerTypes,
+  fetchLandTypes,
+  fetchArtifactTypes,
+  fetchEnchantmentTypes,
+  fetchSpellTypes,
+  fetchPowers,
+  fetchToughnesses,
+  fetchLoyalties,
+  fetchWatermarks,
+  fetchKeywordAbilities,
+  fetchKeywordActions,
+  fetchAbilityWords
+} from './catalogs'
