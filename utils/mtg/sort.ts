@@ -44,6 +44,16 @@ export const colorIdentityOrder: Record<string, number> = {
 }
 
 /**
+ * Normalize a color identity array into a consistently ordered, lower case
+ * color string.
+ */
+export function normalizeColorIdentity(colors: string[]): string {
+  return sortBy(colors, (c) => colorOrder[c.toLowerCase()])
+    .join('')
+    .toLowerCase()
+}
+
+/**
  * Sorts a set of card objects by color given a set of objects and a method to
  * get the colors as an array including ["w", "u", "b", "r", "g"] from each
  * item.
@@ -51,12 +61,7 @@ export const colorIdentityOrder: Record<string, number> = {
 export function byColor<T>(cards: T[], getColors: (card: T) => string[]): T[] {
   return sortBy(cards, (card) => {
     const colors = getColors(card)
-    const colorPosition =
-      colorIdentityOrder[
-        sortBy(colors, (c) => colorOrder[c.toLowerCase()])
-          .join('')
-          .toLowerCase()
-      ]
+    const colorPosition = colorIdentityOrder[normalizeColorIdentity(colors)]
 
     if (colorPosition == null) {
       throw new Error(`Invalid color: ${colors.join('')}`)

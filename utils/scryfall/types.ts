@@ -128,7 +128,7 @@ export interface Card {
   power?: string
   toughness?: string
   loyalty?: string
-  colors: Color[]
+  colors?: Color[]
   color_indicator?: Color[]
   color_identity: Color[]
   keywords: string[]
