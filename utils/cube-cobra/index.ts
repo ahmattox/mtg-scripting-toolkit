@@ -63,11 +63,11 @@ export async function fetchCube(cubeID: string): Promise<CubeCobraCube> {
 export async function fetchCubeCards(cubeID: string) {
   const cube = await fetchCube(cubeID)
 
-  if (!cube?.cards || !cube?._id) {
+  if (!cube?.cards || !cube?.id) {
     return null
   }
 
-  const ids = cube.cards.map((card) => card.cardID)
+  const ids = cube.cards.mainboard.map((card) => card.cardID)
 
   return await scryfall.fetchCollection(ids.map((id) => ({ id })))
 }
