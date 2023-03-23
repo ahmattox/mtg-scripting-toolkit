@@ -1,7 +1,7 @@
 import path from 'node:path'
 import fs from 'node:fs'
 
-const cacheDirectory = path.resolve(__dirname, '../../../.app-cache')
+const cacheDirectory = path.resolve(__dirname, '../.cache')
 
 /**
  * Returns a cached value, or executes the callback to retrieve and cache a new
