@@ -26,13 +26,18 @@ const includeFunnySets = ['unf', 'ust', 'unh', 'ugl']
  * Filter Scryfall sets down to the 'main' sets including masters, funny, and
  * other sets designed to be drafted.
  */
-export function filterMainSets(sets: scryfall.Set[]) {
+export function filterMainSets(
+  sets: scryfall.Set[],
+  includeUnreleased = false
+) {
+  const now = new Date()
+
   return sets.filter(
     (set) =>
       (includedSetTypes.includes(set.set_type) ||
         includeFunnySets.includes(set.code)) &&
       set.parent_set_code == null &&
       !excludedSets.includes(set.code) &&
-      new Date(set.released_at) < new Date()
+      (includeUnreleased || new Date(set.released_at) < now)
   )
 }
