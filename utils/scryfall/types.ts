@@ -4,6 +4,7 @@
  * based on the API documentation and example results.
  */
 
+// Card Layouts: https://scryfall.com/docs/api/layouts
 export enum CardLayout {
   Normal = 'normal',
   Split = 'split',
@@ -12,8 +13,10 @@ export enum CardLayout {
   ModalDfc = 'modal_dfc',
   Meld = 'meld',
   Leveler = 'leveler',
+  Class = 'class',
   Saga = 'saga',
   Adventure = 'adventure',
+  Battle = 'battle',
   Planar = 'planar',
   Scheme = 'scheme',
   Vanguard = 'vanguard',
@@ -23,14 +26,17 @@ export enum CardLayout {
   Augment = 'augment',
   Host = 'host',
   ArtSeries = 'art_series',
-  DoubleSided = 'double_sided'
+  ReversibleCard = 'reversible_card'
 }
 
+// Set Types: https://scryfall.com/docs/api/sets#set-types
 export enum SetType {
   Core = 'core',
   Expansion = 'expansion',
   Masters = 'masters',
+  Alchemy = 'alchemy',
   Masterpiece = 'masterpiece',
+  Arsenal = 'arsenal',
   FromTheVault = 'from_the_vault',
   Spellbook = 'spellbook',
   PremiumDeck = 'premium_deck',
@@ -46,7 +52,8 @@ export enum SetType {
   Box = 'box',
   Promo = 'promo',
   Token = 'token',
-  Memorabilia = 'memorabilia'
+  Memorabilia = 'memorabilia',
+  Minigame = 'minigame'
 }
 
 export enum Color {
@@ -61,7 +68,35 @@ export enum Rarity {
   Common = 'common',
   Uncommon = 'uncommon',
   Rare = 'rare',
-  Mythic = 'mythic'
+  Mythic = 'mythic',
+  Special = 'special',
+  Bonus = 'bonus'
+}
+
+export enum FrameEffect {
+  Legendary = 'legendary',
+  Miracle = 'miracle',
+  Nyxtouched = 'nyxtouched',
+  Draft = 'draft',
+  Devoid = 'devoid',
+  Tombstone = 'tombstone',
+  Colorshifted = 'colorshifted',
+  Inverted = 'inverted',
+  Sunmoondfc = 'sunmoondfc',
+  Compasslanddfc = 'compasslanddfc',
+  Originpwdfc = 'originpwdfc',
+  Mooneldrazidfc = 'mooneldrazidfc',
+  Waxingandwaningmoondfc = 'waxingandwaningmoondfc',
+  Showcase = 'showcase',
+  Extendedart = 'extendedart',
+  Companion = 'companion',
+  Etched = 'etched',
+  SnOw = 'SnOw',
+  Lesson = 'lesson',
+  Shatteredglass = 'shatteredglass',
+  Convertdfc = 'convertdfc',
+  Fandfc = 'fandfc',
+  Upsidedowndfc = 'upsidedowndfc'
 }
 
 export enum CardFaceName {
@@ -113,6 +148,7 @@ export interface List {
   data: Card[]
 }
 
+// Cards: https://scryfall.com/docs/api/cards
 export interface Card {
   object: 'card'
   id: string
@@ -180,8 +216,8 @@ export interface Card {
   artist_ids: string[]
   illustration_id: string
   border_color: 'black' | 'white' | 'borderless' | 'silver' | 'gold'
-  frame: string
-  frame_effects?: string[]
+  frame: '1993' | '1997' | '2003' | '2015' | 'future'
+  frame_effects?: FrameEffect[]
   security_stamp: 'oval' | 'triangle' | 'acorn' | 'arena' | 'heart'
   full_art: boolean
   textless: boolean
@@ -219,6 +255,7 @@ export interface CardFace {
   flavor_text?: string
 }
 
+// Sets: https://scryfall.com/docs/api/sets
 export interface Set {
   object: 'set'
   id: string
