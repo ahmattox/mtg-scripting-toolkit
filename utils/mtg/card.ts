@@ -14,6 +14,13 @@ function parseNumber(value: string | null | undefined): number {
   return isNaN(parsed) ? 0 : parsed
 }
 
+export function names(card: scryfall.Card) {
+  if (card.card_faces != null) {
+    return card.card_faces.map((face) => face.name)
+  }
+  return [card.name]
+}
+
 export function isNamed(card: scryfall.Card, name: string) {
   const names = [
     card.name.toLowerCase(),
