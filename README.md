@@ -2,8 +2,8 @@
 
 A Typescript toolkit for working with and analyzing MTG card data. It includes
 functions for fetching data from Scryfall's API and bulk data sources, fetching
-lists from Cube Cobra, and utilities for transforming, filtering, sorting, and
-transforming card data.
+lists from Cube Cobra and Moxfield, and utilities for transforming, filtering,
+sorting, and transforming card data.
 
 These tools have been written for personal curiosity or as part of
 [Lucky Paper](https://luckypaper.co/) projects. It's published in case it could
@@ -39,14 +39,14 @@ Run scripts with tsx, a utility for executing Typescript files.
 ## Components
 
 The `utils` directory includes a handful of general purpose utility functions
-and directories for loading and working with data from Scryfall, Cube Cobra, and
-some general purpose MTG specific tools.
+and directories for loading and working with data from Scryfall, Cube Cobra,
+Moxfield, and some general purpose MTG specific tools.
 
 It's recommended to import the index file of utility sub-directories.
 
 ### Scryfall
 
-The `/utils/scryfall` directly includes tools for interacting with Scryfall's
+The `utils/scryfall` directly includes tools for interacting with Scryfall's
 API. These mostly mirror Scryfall's API endpoints and include type checking for
 parameters and results.
 
@@ -82,7 +82,7 @@ main()
 
 ### Cube Cobra
 
-The `cube-cobra` directory includes functions for loading data from
+The `utils/cube-cobra` directory includes functions for loading data from
 [Cube Cobra](https://cubecobra.com)'s list and JSON endpoints and types for the
 JSON structure.
 
@@ -101,6 +101,36 @@ async function main() {
     // Fetch the full card data from Scryfall for each card in the Cube,
     // respecting chosen printings.
     const cards = await cubeCobra.fetchCubeCards(cubeID)
+
+    // ...
+}
+
+main()
+```
+
+### Moxfield
+
+The 'utils/moxfield' directory includes tools for fetching decklists from
+Moxfield.
+
+Types have been written based on example scripts. They cover cases I've
+encountered but aren't necessarily complete or accurate.
+
+> Note that the Moxfield API isn't public or documented. Although we can access
+> and use it, it's not guaranteed to be stable in the future and couldn't be
+> fetched in a browser.
+
+```typescript
+import * as moxfield from 'utils/moxfield'
+
+async function main() {
+    // Fetch all data about a deck from Moxfield
+    const deck = await moxfield.getDeck(
+        'https://www.moxfield.com/decks/zjLly58vpkGltgcS7eO-ig'
+    )
+
+    // Extract the list of card names from the deck object.
+    const cardNames = moxfield.cardNamesFromDeck(deck)
 
     // ...
 }
