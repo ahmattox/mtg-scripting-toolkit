@@ -8,7 +8,7 @@
     "url": "https://anthonymattox.com"
   },
   "engines": {
-    "node": "^18.10.0"
+    "node": "^18.16.0"
   },
   "repository": {
     "type": "git",
