@@ -73,6 +73,34 @@ export enum Rarity {
   Bonus = 'bonus'
 }
 
+export enum Format {
+  Standard = 'standard',
+  Future = 'future',
+  Historic = 'historic',
+  Gladiator = 'gladiator',
+  Pioneer = 'pioneer',
+  Explorer = 'explorer',
+  Modern = 'modern',
+  Legacy = 'legacy',
+  Pauper = 'pauper',
+  Vintage = 'vintage',
+  Penny = 'penny',
+  Commander = 'commander',
+  Oathbreaker = 'oathbreaker',
+  Brawl = 'brawl',
+  HistoricBrawl = 'historicbrawl',
+  Alchemy = 'alchemy',
+  PauperCommander = 'paupercommander',
+  Duel = 'duel',
+  Oldschool = 'oldschool',
+  Premodern = 'premodern',
+  PrEDH = 'predh'
+}
+
+export const formats = Object.values(Format)
+
+export type Legality = 'legal' | 'not_legal' | 'restricted' | 'banned'
+
 export enum FrameEffect {
   Legendary = 'legendary',
   Miracle = 'miracle',
@@ -187,7 +215,7 @@ export interface Card {
     type_line: string
     uri: string
   }[]
-  legalities: Record<string, 'legal' | 'not_legal' | 'banned'>
+  legalities: Record<Format, Legality>
   games: string[]
   reserved: boolean
   foil: boolean

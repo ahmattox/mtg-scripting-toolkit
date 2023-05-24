@@ -1,16 +1,21 @@
 # MTG Scripting Toolkit
 
 A Typescript toolkit for working with and analyzing MTG card data. It includes
-functions for fetching data from Scryfall's API and bulk data sources, fetching
-lists from Cube Cobra and Moxfield, and utilities for transforming, filtering,
-sorting, and transforming card data.
+functions for fetching data from a number of Magic sources: most importantly
+[Scryfall](https://scryfall.com)'s API and bulk data sets but also
+[Cube Cobra](http://cubecobra.com), [Moxfield](http://cubecobra.com), and the
+[Commander Spellbook](https://commanderspellbook.com). It also includes
+utilities for filtering, sorting, and transforming card data.
 
 These tools have been written for personal curiosity or as part of
-[Lucky Paper](https://luckypaper.co/) projects. It's published in case it could
-be useful to others as a scripting context for analyzing MTG card data. It's not
-structured or licensed to be an integrated package in other projects. Nothing,
-including API coverage or types, is guaranteed to be complete or accurate as
-it's been written ad-hoc for my own needs.
+[Lucky Paper](https://luckypaper.co/) projects. It's published in the hope it
+can useful to others as a scripting context for analyzing MTG card data. It's
+not structured, licensed, or versioned to be an integrated package in other
+projects. Nothing, including API coverage or types, is guaranteed to be complete
+or accurate as it's been written ad-hoc for my own needs.
+
+If it's useful or you need some help,
+[let me know](https://twitter.com/ahmattox)!
 
 ## Using the Repo
 
@@ -138,6 +143,40 @@ async function main() {
 main()
 ```
 
+### Commander Spellbook
+
+`utils/commander-spellbook` fetches and enriches the database of cards from the
+Commander Spellbook. The card objects from Scryfall are added to combos. Note
+that many of the fields on these combos are intended to be human readable. For
+example the 'results' are worded consistently, but include many specific
+variations.
+
+```typescript
+import * as spellbook from 'utils/commander-spellbook'
+
+import { log } from 'utils/log'
+
+async function main() {
+    // Fetch all combos in the spell book
+    const combos = await spellbook.fetchCommanderSpellbook()
+
+    // E.g. filter for combos that include a specific result
+    const infiniteCombatCombos = combos.filter((combo) =>
+        combo.results?.includes('Infinite combat phases')
+    )
+
+    log(
+        infiniteCombatCombos
+            .map((combo) => combo.cardNames.join(', '))
+            .join('\n')
+    )
+
+    // ...
+}
+
+main()
+```
+
 ### MTG Utilities
 
 The `mtg` utilities directory includes functions for things you might want to do
@@ -147,8 +186,12 @@ cards.
 
 ## Caching
 
-Scryfall's bulk data requests are cached. Run `yarn cache:clear` to reset the
-cache and reload new data on the next run.
+Scryfall's bulk data, and some other expensive data sets, are cached. Reset the
+cache to reload fresh data the next time you run a script.
+
+```sh
+    $ yarn cache:clear
+```
 
 ## Contact
 

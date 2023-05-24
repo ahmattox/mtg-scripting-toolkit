@@ -1,20 +1,23 @@
 export {
-  type CardLayout,
+  CardLayout,
   type SetType,
   type Color,
   type Rarity,
+  Format,
+  formats,
+  type Legality,
+  type FrameEffect,
   type CardFaceName,
-  type CardID,
-  type CardFace,
   type ImageType,
-  type Card,
+  imageTypes,
+  type CardID,
+  type FetchCardID,
   type List,
+  type Card,
+  type CardFace,
   type Set,
-  type Error,
-  type FetchCardID
+  type Error
 } from './types'
-
-export { imageTypes } from './types'
 
 export { cardNames } from './cardNames'
 export { fetchCard } from './fetchCard'
