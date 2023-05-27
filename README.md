@@ -34,7 +34,7 @@ $ yarn install
 
 ### Create a script
 
-Create a script or copy an example.
+Create a script or copy [an example](scripts/examples).
 
 Run scripts with tsx, a utility for executing Typescript files.
 
@@ -42,12 +42,13 @@ Run scripts with tsx, a utility for executing Typescript files.
 $ yarn run tsx ./scripts/my-script-file-name
 ```
 
-In the examples, input and output is handled a few ways. Input may be arguments
-or prompts, and may be paths to files for working with things like lists of
-cards. Since this is intended for quick data analysis and transformation, output
-is mostly just printed to the console for simplicity.
+In the [example scripts](scripts/examples), input and output is handled a few
+ways. Input may be arguments or prompts, and may be paths to files for working
+with things like lists of cards. Since this is intended for quick data analysis
+and transformation, output is mostly just printed to the console for simplicity.
 
-See comments in individual examples for more specific options.
+See comments in [individual examples](scripts/examples) for more specific kinds
+of things you can do.
 
 ## Components
 
