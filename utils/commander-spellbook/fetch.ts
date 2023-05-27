@@ -3,11 +3,11 @@ import { compact } from 'lodash'
 import * as scryfall from 'utils/scryfall'
 
 import { fetchSheet } from 'utils/googleSheets'
+import { cachedValue } from 'utils/cache'
 import { collectiveLegality } from 'utils/mtg'
 
 import { googleSheetID, combosSheetName } from './config'
 import { Combo } from './types'
-import { cachedValue } from 'utils/cache'
 
 function slug(name: string) {
   return name.toLowerCase().replace(/[- ,'’]/g, '')
@@ -20,7 +20,25 @@ function slug(name: string) {
  */
 export async function fetchCommanderSpellbook(): Promise<Combo[]> {
   return cachedValue(`commander-spellbook`, async () => {
-    const comboRows = await fetchSheet({
+    const comboRows = await fetchSheet<
+      | ''
+      | 'Card 1'
+      | 'Card 2'
+      | 'Card 3'
+      | 'Card 4'
+      | 'Card 5'
+      | 'Card 6'
+      | 'Card 7'
+      | 'Card 8'
+      | 'Card 9'
+      | 'Card 10'
+      | 'Color Identity'
+      | 'Prerequisites'
+      | 'Steps'
+      | 'Results'
+      | 'Variant IDs'
+      | 'Duplicate Protection'
+    >({
       id: googleSheetID,
       sheetName: combosSheetName
     })

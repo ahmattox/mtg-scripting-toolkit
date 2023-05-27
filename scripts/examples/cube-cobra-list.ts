@@ -5,6 +5,7 @@ import * as cubeCobra from 'utils/cube-cobra'
 import { Color, log } from 'utils/log'
 
 /**
+ * Prints the list of card names in a Cube on Cube Cobra.
  *
  * Run with
  *
@@ -31,7 +32,7 @@ async function main() {
 
   const cards = await cubeCobra.fetchCubeList(cubeID)
 
-  console.log(`id: ${cubeID}`)
+  log(`id: ${cubeID}`)
 
   log('\n\n')
   log(cards.join('\n'), Color.blue)

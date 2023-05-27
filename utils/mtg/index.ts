@@ -5,10 +5,11 @@
 export * as sort from './sort'
 export * as card from './card'
 
+export { collectiveLegality } from './legality'
 export { colorGroup, type ColorGroup } from './colorGroup'
 export { filterExtras } from './filterExtras'
 export { filterMainSets } from './filterMainSets'
 export { groupCardsByType } from './groupCardsByType'
 export { magicSort } from './magicSort'
+export { spellCheckCardNames } from './spellCheckCardNames'
 export { uniqueFirstPrintings } from './uniqueFirstPrintings'
-export { collectiveLegality } from './legality'

@@ -10,7 +10,6 @@ import { regexEscape } from 'utils/regexEscape'
 /**
  * Count the top creature types for each color across all MTG cards.
  *
- *
  * Run with
  *
  *     yarn run tsx ./scripts/examples/top-creature-types-by-color

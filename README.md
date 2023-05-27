@@ -9,10 +9,11 @@ utilities for filtering, sorting, and transforming card data.
 
 These tools have been written for personal curiosity or as part of
 [Lucky Paper](https://luckypaper.co/) projects. It's published in the hope it
-can useful to others as a scripting context for analyzing MTG card data. It's
-not structured, licensed, or versioned to be an integrated package in other
-projects. Nothing, including API coverage or types, is guaranteed to be complete
-or accurate as it's been written ad-hoc for my own needs.
+can useful to others as a scripting context for analyzing or transforming MTG
+card data. It's not structured, licensed, or versioned to be an integrated
+package in other projects. Nothing, including API coverage or types, is
+guaranteed to be complete or accurate as it's been written ad-hoc for my own
+needs.
 
 If it's useful or you need some help,
 [let me know](https://twitter.com/ahmattox)!
@@ -28,7 +29,7 @@ to use the correct version.
 In this directory install dependencies with [Yarn](https://yarnpkg.com):
 
 ```sh
-    $ yarn install
+$ yarn install
 ```
 
 ### Create a script
@@ -38,8 +39,15 @@ Create a script or copy an example.
 Run scripts with tsx, a utility for executing Typescript files.
 
 ```sh
-    $ yarn run tsx ./scripts/my-script-file-name
+$ yarn run tsx ./scripts/my-script-file-name
 ```
+
+In the examples, input and output is handled a few ways. Input may be arguments
+or prompts, and may be paths to files for working with things like lists of
+cards. Since this is intended for quick data analysis and transformation, output
+is mostly just printed to the console for simplicity.
+
+See comments in individual examples for more specific options.
 
 ## Components
 
@@ -124,6 +132,9 @@ encountered but aren't necessarily complete or accurate.
 > Note that the Moxfield API isn't public or documented. Although we can access
 > and use it, it's not guaranteed to be stable in the future and couldn't be
 > fetched in a browser.
+>
+> Scraping Moxfield is against their TOS. Do not use this to extract data en
+> masse.
 
 ```typescript
 import * as moxfield from 'utils/moxfield'
@@ -177,6 +188,12 @@ async function main() {
 main()
 ```
 
+### Academy Ruins
+
+[Academy Ruins](https://academyruins.com) preserves an archive of changes to
+Magic's comprehensive rules over time. You can fetch the current rules at the
+release of any set.
+
 ### MTG Utilities
 
 The `mtg` utilities directory includes functions for things you might want to do
@@ -184,13 +201,15 @@ with Magic card data. Tools include sorting cards by color in the traditional
 way, grouping cards by type, or filtering reprints and variants from a set of
 cards.
 
+See comments in individual files for details.
+
 ## Caching
 
 Scryfall's bulk data, and some other expensive data sets, are cached. Reset the
 cache to reload fresh data the next time you run a script.
 
 ```sh
-    $ yarn cache:clear
+$ yarn cache:clear
 ```
 
 ## Contact

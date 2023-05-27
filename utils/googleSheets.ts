@@ -15,26 +15,12 @@ function csvURL(options: URLOptions) {
   return `https://docs.google.com/spreadsheets/d/${id}/gviz/tq?tqx=out:csv&sheet=${sheetName}`
 }
 
-export async function fetchSheet(urlOptions: URLOptions) {
+/**
+ * Fetch the contents of a Google sheet. Specify the id and either the 'sheet
+ * name' or 'gid' which you can find in the sheet's URL.
+ */
+export async function fetchSheet<T extends string>(urlOptions: URLOptions) {
   const data = await (await fetch(csvURL(urlOptions))).text()
 
-  return d3.csvParse<
-    | ''
-    | 'Card 1'
-    | 'Card 2'
-    | 'Card 3'
-    | 'Card 4'
-    | 'Card 5'
-    | 'Card 6'
-    | 'Card 7'
-    | 'Card 8'
-    | 'Card 9'
-    | 'Card 10'
-    | 'Color Identity'
-    | 'Prerequisites'
-    | 'Steps'
-    | 'Results'
-    | 'Variant IDs'
-    | 'Duplicate Protection'
-  >(data)
+  return d3.csvParse<T>(data)
 }

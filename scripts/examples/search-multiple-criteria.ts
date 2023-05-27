@@ -3,20 +3,6 @@ import * as mtg from 'utils/mtg'
 
 import { Color, log } from 'utils/log'
 
-function filterMinimumCriteria(
-  cards: scryfall.Card[],
-  criteria: ((card: scryfall.Card) => boolean)[],
-  minimum: number
-) {
-  return cards.filter(
-    (card) =>
-      criteria.reduce((result, criterion) => {
-        result += criterion(card) ? 1 : 0
-        return result
-      }, 0) >= minimum
-  )
-}
-
 /**
  * Example script of creating an advanced query for cards matching a minimum
  * number of requirements which isn't possible directly through Scryfall.
@@ -50,3 +36,17 @@ async function main() {
 }
 
 main()
+
+function filterMinimumCriteria(
+  cards: scryfall.Card[],
+  criteria: ((card: scryfall.Card) => boolean)[],
+  minimum: number
+) {
+  return cards.filter(
+    (card) =>
+      criteria.reduce((result, criterion) => {
+        result += criterion(card) ? 1 : 0
+        return result
+      }, 0) >= minimum
+  )
+}

@@ -8,15 +8,15 @@ import { cachedValue } from 'utils/cache'
 
 /**
  *
- * Run with
- *
- *     yarn tsx ./scripts/examples/cube-cobra-csv [optional cube id or link]
- *
  * Fetches a cube from Cube Cobra and prints a sorted CSV of all colors. This is
  * tailed to printing the list necessary for the templates linked in this
  * article:
  *
  * https://luckypaper.co/articles/cube-in-the-time-of-covid-with-rotisserie-draft/
+ *
+ * Run with
+ *
+ *     yarn tsx ./scripts/examples/cube-cobra-csv [optional cube id or link]
  *
  */
 async function main() {

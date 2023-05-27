@@ -13,7 +13,6 @@ import { Color, log } from 'utils/log'
  *     yarn run tsx ./scripts/unique-promo-types
  *
  */
-
 async function main() {
   const cards = await scryfall.fetchBulkData('default_cards')
 
