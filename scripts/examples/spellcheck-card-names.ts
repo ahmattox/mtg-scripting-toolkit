@@ -1,8 +1,6 @@
-import fs from 'fs'
-
 import { Color, log } from 'utils/log'
 
-import * as mtg from 'utils/mtg/spellCheckCardNames'
+import * as mtg from 'utils/mtg'
 
 /**
  * Spellcheck a list of card names, checking against Scryfall's database. Names
@@ -26,12 +24,7 @@ async function main() {
     throw new Error('Pass a path to a list of cards as the first argument.')
   }
 
-  const inputFile = fs.readFileSync(cardListPath).toString()
-
-  const cardNames = inputFile
-    .split('\n')
-    .map((line) => line.trim())
-    .filter((line) => line.length > 0)
+  const cardNames = mtg.parseCardList(cardListPath)
 
   const results = await mtg.spellCheckCardNames(cardNames)
 
