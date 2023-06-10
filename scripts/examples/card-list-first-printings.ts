@@ -14,7 +14,7 @@ import { Color, log } from 'utils/log'
  *
  * Run with
  *
- *     yarn tsx ./scripts/examples/card-list-first-printings
+ *     yarn tsx ./scripts/examples/card-list-first-printings [path/to/cards-list]
  *
  */
 async function main() {

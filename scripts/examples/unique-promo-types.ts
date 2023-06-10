@@ -10,7 +10,7 @@ import { Color, log } from 'utils/log'
  *
  * Run with
  *
- *     yarn run tsx ./scripts/unique-promo-types
+ *     yarn run tsx ./scripts/examples/unique-promo-types
  *
  */
 async function main() {
