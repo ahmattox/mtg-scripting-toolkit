@@ -275,6 +275,7 @@ export interface CardFace {
   color_indicator?: Color[]
   power?: string
   toughness?: string
+  defense?: string
   loyalty?: string
   artist: string
   artist_id: string
