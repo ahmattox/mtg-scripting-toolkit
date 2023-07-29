@@ -3,7 +3,7 @@
 A Typescript toolkit for working with and analyzing MTG card data. It includes
 functions for fetching data from a number of Magic sources: most importantly
 [Scryfall](https://scryfall.com)'s API and bulk data sets but also
-[Cube Cobra](http://cubecobra.com), [Moxfield](http://cubecobra.com), and the
+[Cube Cobra](http://cubecobra.com), and the
 [Commander Spellbook](https://commanderspellbook.com). It also includes
 utilities for filtering, sorting, and transforming card data.
 
@@ -53,8 +53,8 @@ of things you can do.
 ## Components
 
 The `utils` directory includes a handful of general purpose utility functions
-and directories for loading and working with data from Scryfall, Cube Cobra,
-Moxfield, and some general purpose MTG specific tools.
+and directories for loading and working with data from Scryfall, Cube Cobra, and
+some general purpose MTG specific tools.
 
 It's recommended to import the index file of utility sub-directories.
 
@@ -115,39 +115,6 @@ async function main() {
     // Fetch the full card data from Scryfall for each card in the Cube,
     // respecting chosen printings.
     const cards = await cubeCobra.fetchCubeCards(cubeID)
-
-    // ...
-}
-
-main()
-```
-
-### Moxfield
-
-The 'utils/moxfield' directory includes tools for fetching decklists from
-Moxfield.
-
-Types have been written based on example scripts. They cover cases I've
-encountered but aren't necessarily complete or accurate.
-
-> Note that the Moxfield API isn't public or documented. Although we can access
-> and use it, it's not guaranteed to be stable in the future and couldn't be
-> fetched in a browser.
->
-> Scraping Moxfield is against their TOS. Do not use this to extract data en
-> masse.
-
-```typescript
-import * as moxfield from 'utils/moxfield'
-
-async function main() {
-    // Fetch all data about a deck from Moxfield
-    const deck = await moxfield.getDeck(
-        'https://www.moxfield.com/decks/zjLly58vpkGltgcS7eO-ig'
-    )
-
-    // Extract the list of card names from the deck object.
-    const cardNames = moxfield.cardNamesFromDeck(deck)
 
     // ...
 }
