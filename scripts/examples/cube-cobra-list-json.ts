@@ -39,12 +39,13 @@ async function main() {
 
   const colorGroups = groupBy(sortedCards, (card) => {
     if (card.details.type === 'Land') {
-      if (card.details.color_identity.length === 1) {
-        return card.details.color_identity[0].toLowerCase()
-      }
-      if (card.details.color_identity.length > 1) {
-        return 'm'
-      }
+      return 'l'
+      // if (card.details.color_identity.length === 1) {
+      //   return card.details.color_identity[0].toLowerCase()
+      // }
+      // if (card.details.color_identity.length > 1) {
+      //   return 'm'
+      // }
     }
     return card.details.colorcategory
   })
@@ -55,11 +56,23 @@ async function main() {
   ).map((color) => {
     const group = colorGroups[color]
 
-    const typeGroups = groupBy(
-      group,
-      (card) =>
-        (card.type_line ?? card.details.type ?? '').match(supertypePattern)?.[1]
-    )
+    const typeGroups = groupBy(group, (card) => {
+      if (color === 'm' || color === 'l') {
+        return card.details.color_identity.length > 2
+          ? '3+'
+          : card.details.color_identity.join('')
+      }
+      return (card.type_line ?? card.details.type ?? '').match(
+        supertypePattern
+      )?.[1]
+    })
+
+    const labelFor = (color: string, group: string, length: number) => {
+      if (color === 'm' || color === 'l') {
+        return multiColorLabels[group]
+      }
+      return length === 1 ? group : typeLabels[group]
+    }
 
     const sections = sortBy(
       Object.keys(typeGroups),
@@ -71,7 +84,7 @@ async function main() {
         set: card.details.set
       }))
       return {
-        label: typeLabels[type],
+        label: labelFor(color, type, cards.length),
         cards
       }
     }, {} as Dictionary<{ name: string }[]>)
@@ -149,4 +162,18 @@ const typeLabels: Record<string, string> = {
   Enchantment: 'Enchantments',
   Planeswalker: 'Planeswalkers',
   Land: 'Lands'
+}
+
+const multiColorLabels: Record<string, string> = {
+  GW: 'Selesnya',
+  UW: 'Azorius',
+  BU: 'Dimir',
+  BR: 'Rakdos',
+  GR: 'Gruul',
+  BW: 'Orzhov',
+  RU: 'Izzet',
+  BG: 'Golgari',
+  RW: 'Boros',
+  GU: 'Simic',
+  '3+': 'Multicolor'
 }
