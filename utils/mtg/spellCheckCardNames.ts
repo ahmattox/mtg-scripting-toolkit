@@ -11,12 +11,21 @@ import * as scryfall from 'utils/scryfall'
  * Double faced cards must have both parts of the name separated by " // ".
  * Adventure cards must have only the top card name.
  */
-export async function spellCheckCardNames(namesToValidate: string[]) {
+export async function spellCheckCardNames(
+  namesToValidate: string[],
+  options: { skipValidation?: (value: string) => boolean } = {}
+) {
+  const { skipValidation = () => false } = options
+
   const cardNames = await fetchCardNames()
 
   const fuzzy = new Fuse(cardNames, { includeScore: true })
 
   return namesToValidate.map((name) => {
+    if (skipValidation(name)) {
+      return { name, valid: true, skipped: true }
+    }
+
     const valid = cardNames.includes(name)
 
     if (valid) {
